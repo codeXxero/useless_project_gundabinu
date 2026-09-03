@@ -17,7 +17,6 @@ export default function JathakamApp() {
   const [loading, setLoading] = useState(false);
   const [horoscope, setHoroscope] = useState("");
   const [weather, setWeather] = useState<Weather | null>(null);
-  const [location, setLocation] = useState("");
   const [locationSource, setLocationSource] = useState("");
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
@@ -33,7 +32,6 @@ export default function JathakamApp() {
     setError("");
     setHoroscope("");
     setWeather(null);
-    setLocation("");
     setLocationSource("");
     setCopied(false);
 
@@ -53,6 +51,28 @@ export default function JathakamApp() {
     setLoading(true);
 
     try {
+      let coordinates: { latitude: number; longitude: number } | null = null;
+
+      // Ask the browser for approximate current location. If permission is
+      // denied, the API automatically falls back to the birthplace.
+      if (typeof navigator !== "undefined" && navigator.geolocation) {
+        coordinates = await new Promise((resolve) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) =>
+              resolve({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+              }),
+            () => resolve(null),
+            {
+              enableHighAccuracy: false,
+              timeout: 5000,
+              maximumAge: 300000,
+            }
+          );
+        });
+      }
+
       const response = await fetch("/api/jathakam", {
         method: "POST",
         headers: {
@@ -61,6 +81,8 @@ export default function JathakamApp() {
         body: JSON.stringify({
           dob,
           birthplace: birthplace.trim(),
+          latitude: coordinates?.latitude,
+          longitude: coordinates?.longitude,
         }),
       });
 
@@ -72,7 +94,6 @@ export default function JathakamApp() {
 
       setHoroscope(data.horoscope);
       setWeather(data.weather);
-      setLocation(data.location);
       setLocationSource(data.locationSource || "birthplace");
     } catch (error) {
       setError(
@@ -164,11 +185,11 @@ export default function JathakamApp() {
           <section className="weather">
             <div className="weather-card">
               <span>Weather Location</span>
-              <strong>{location}</strong>
+              <strong>Cosmic Weather</strong>
               <small>
                 {locationSource === "birthplace"
                   ? "Based on birthplace"
-                  : "Based on approximate current location"}
+                  : "Based on your current location"}
               </small>
             </div>
 

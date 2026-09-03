@@ -1,5 +1,5 @@
 {
-  "name": "cosmic-jathakam-procedural",
+  "name": "cosmic-jathakam-gemini",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@google/genai": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
