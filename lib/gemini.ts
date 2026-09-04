@@ -62,36 +62,36 @@ Directly horoscope start cheyyuka.
 
 FORMAT:
 
-🔮 NINTE WHOLE LIFE JATHAKAM
+🔮 YOUR WHOLE LIFE JATHAKAM
 
-🧬 PERSONALITY
+PERSONALITY
 1-2 short funny sentences.
 
-👶 CHILDHOOD
+ CHILDHOOD
 1-2 short funny sentences.
 
-🧑 TEENAGE YEARS
+TEENAGE YEARS
 1-2 short funny sentences.
 
-🎓 EDUCATION
+ EDUCATION
 1-2 short funny sentences.
 
-💼 CAREER
+CAREER
 1-2 short funny sentences.
 
-🚀 20s
+20s
 1-2 short funny sentences.
 
-💰 MONEY
+ MONEY
 1-2 short funny sentences.
 
-❤️ LOVE LIFE
+LOVE LIFE
 1-2 short funny sentences.
 
-💍 MARRIAGE
+ MARRIAGE
 1-2 short funny sentences.
 
-🏠 FAMILY
+FAMILY
 1-2 short funny sentences.
 
 📈 30s
@@ -103,22 +103,22 @@ FORMAT:
 💎 50s
 1-2 short funny sentences.
 
-👴 OLD AGE
+OLD AGE
 1-2 short funny sentences.
 
-🌌 FINAL DESTINY
+ FINAL DESTINY
 1-2 short funny sentences.
 
-🍀 LUCKY COLOR
+ LUCKY COLOR
 Exactly one color.
 
-🔢 LUCKY NUMBER
+LUCKY NUMBER
 Exactly one number between 10 and 99.
 
-🌧️ WEATHER-BASED PREDICTION
+WEATHER-BASED PREDICTION
 Make one ridiculous prediction using the actual weather numbers above.
 
-🎯 MOST ABSURD PREDICTION
+MOST ABSURD PREDICTION
 One extremely specific and stupid prediction.
 
 FINAL COSMIC VERDICT
