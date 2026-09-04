@@ -67,20 +67,17 @@ This project is completely software-based.
 # Installation and Run
 completely web based
 
-
 ### Project Documentation
 For Software:
+## initial design
+![initial design ](images/p2.png)
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-!![initial stage](image-1.png)
-*Enter details to get started
-![wait till it loads!](image-2.png)
-Horoscope is cooking!!
+## output looked like this at first
 
-![sample horoscope](image.png)
-*Custom horoscope generated from current weather conditions
+![output ](images/p3.png)
 
+## final output
+![final](images/p1.png)
 
 # Diagrams
 ### Software Architecture
@@ -129,8 +126,6 @@ Horoscope is cooking!!
 *Add caption explaining your workflow*
 
 
-## initial design
-![initial design ](images/p2.png)
 
 ## Team Contributions
 - Aditya Sanjay [dealt with the backend and apis]
