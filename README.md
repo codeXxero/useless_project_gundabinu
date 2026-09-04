@@ -2,7 +2,7 @@
 
 
 
-# CosmicJathakaam 🎯
+# CosmicJathakaam 
 
 ![home page](images/p1.png)
 ## Basic Details
@@ -66,6 +66,7 @@ This project is completely software-based.
 
 # Installation and Run
 completely web based
+[Try Cosmic Jathakam](https://cosmicjathakaam.vercel.app/)
 
 ### Project Documentation
 For Software:
@@ -127,7 +128,10 @@ For Software:
 *Add caption explaining your workflow*
 
 
+## some minor challenges we faced-
 
+took a whole lotta time to implement the api as it was hitting the limit continously but we managed.
+had a simple logical bug which took like half of our time of building.
 ## Team Contributions
 - Aditya Sanjay [dealt with the backend and apis]
 - Rajasri S [frontend and css st]
