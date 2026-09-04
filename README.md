@@ -4,7 +4,7 @@
 
 # CosmicJathakaam 🎯
 
-
+![home page](images/p1.png)
 ## Basic Details
 ### Team Name: Gunda binu adholokam
 
@@ -129,10 +129,12 @@ Horoscope is cooking!!
 *Add caption explaining your workflow*
 
 
+## initial design
+![initial design ](images/p2.png)
 
 ## Team Contributions
 - Aditya Sanjay [dealt with the backend and apis]
-- Rajasri S [frontend and css styling]
+- Rajasri S [frontend and css st]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
