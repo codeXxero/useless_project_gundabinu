@@ -10,12 +10,12 @@
 
 
 ### Team Members
--
+
 - Member 1: Rajasri S - Model Engineering College, Thrikkakara
 - Member 2: Aditya Sanjay - Model Engineering College, Thrikkakara
 
 ### Project Description- Cosmic Jaathakam
--It gives a whole dedicated personal horoscope based on the weather in your current location
+- WE all know those old ahh jathakam is full of lies, so we developed an actual ,factual way of predicting your horoscope which is completely science based i.e it uses them current weather to predict your whole jathakam (pretty cool i d say)
 
 ### The Problem (that doesn't exist)
 How to get a personalized jaathakam (horoscope) based on the weather ?
