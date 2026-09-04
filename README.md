@@ -59,7 +59,7 @@ This project is completely software-based.
 
 ---
 
- ## Implementation
+
 
 
 
@@ -131,8 +131,8 @@ Horoscope is cooking!!
 
 
 ## Team Contributions
-- Aditya Sanjay [Specific contributions]
-- Rajasri S [Specific contributions]
+- Aditya Sanjay [dealt with the backend and apis]
+- Rajasri S [frontend and css styling]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
