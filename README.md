@@ -78,6 +78,7 @@ For Software:
 
 ## final output
 ![final](images/p1.png)
+![final](images/p4.png)
 
 # Diagrams
 ### Software Architecture
