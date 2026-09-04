@@ -1,16 +1,883 @@
-:root{--bg:#09090f;--panel:#11111a;--panel2:#171722;--border:#2b2a38;--text:#f5f2ff;--muted:#aaa5b8;--accent:#b994ff;--accent2:#8062d9}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,rgba(185,148,255,.13),transparent 30rem),radial-gradient(circle at 90% 20%,rgba(110,80,180,.12),transparent 28rem),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-button,input{font:inherit}.page{width:min(980px,calc(100% - 28px));margin:auto;padding:48px 0 70px}.hero{text-align:center;margin-bottom:28px}.eyebrow{font-size:11px;letter-spacing:.2em;color:var(--accent);font-weight:800;margin-bottom:12px}.hero h1{font-size:clamp(42px,8vw,78px);line-height:.95;letter-spacing:-.06em;margin:0}.hero p{color:var(--muted);line-height:1.6;max-width:620px;margin:18px auto 0}
-.panel{background:rgba(17,17,26,.9);border:1px solid var(--border);border-radius:24px;padding:25px;box-shadow:0 25px 80px rgba(0,0,0,.3)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field label{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-bottom:8px}.field input{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:14px;outline:none}.field input:focus{border-color:var(--accent)}
-.generate{width:100%;margin-top:19px;border:0;border-radius:12px;padding:15px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0c0814;font-weight:900;cursor:pointer}.generate:disabled{opacity:.55;cursor:wait}.status{text-align:center;color:var(--muted);padding:24px}.spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}@keyframes spin{to{transform:rotate(360deg)}}
-.weather{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.weather-card{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:14px}.weather-card span{display:block;color:var(--muted);font-size:12px}.weather-card strong{display:block;margin-top:5px;font-size:18px}
-.result{margin-top:22px}.result-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.result-head h2{margin:0;font-size:20px}.copy{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:9px;padding:8px 12px;cursor:pointer}.horoscope{margin-top:12px;background:#0c0c13;border:1px solid var(--border);border-radius:17px;padding:23px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}.error{margin-top:16px;padding:12px;border-radius:11px;background:#261313;border:1px solid #633b3b;color:#ffbaba}.footer{text-align:center;color:#706b7b;font-size:12px;margin-top:20px}
-@media(max-width:680px){.page{padding-top:30px}.panel{padding:18px}.form-grid{grid-template-columns:1fr}.weather{grid-template-columns:1fr 1fr}}
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
 
+:root {
+  --bg: #070711;
+  --panel: #0e0d1b;
+  --panel2: #141326;
+
+  --purple: #8246d5;
+  --pink: #d4b2ef;
+  --cyan: #4deeea;
+  --lime: #b6ff4a;
+  --yellow: #ffe66d;
+  --orange: #ff9f43;
+
+  --text: #f4efff;
+  --muted: #938ba8;
+
+  --border: #33295a;
+}
+
+/* =========================
+   BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--text);
+
+  font-family: "Space Mono", monospace;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(255, 50, 180, 0.16),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(80, 80, 255, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(0, 240, 255, 0.08),
+      transparent 30%
+    ),
+    #070711;
+
+  overflow-x: hidden;
+}
+
+/* =========================
+   PIXEL STAR FIELD
+========================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, #ffffff 1px, transparent 1px),
+    radial-gradient(circle, var(--pink) 1px, transparent 1px),
+    radial-gradient(circle, var(--cyan) 1px, transparent 1px);
+
+  background-size:
+    83px 83px,
+    137px 137px,
+    211px 211px;
+
+  background-position:
+    10px 20px,
+    50px 80px,
+    120px 40px;
+
+  opacity: 0.28;
+
+  animation: starDrift 25s linear infinite;
+}
+
+@keyframes starDrift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-83px);
+  }
+}
+
+/* =========================
+   SCANLINES
+========================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(255, 255, 255, 0.025) 4px
+    );
+
+  opacity: 0.35;
+
+  z-index: 20;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  position: relative;
+  z-index: 1;
+
+  width: min(960px, calc(100% - 30px));
+
+  margin: auto;
+
+  padding: 38px 0 70px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  text-align: center;
+
+  padding: 15px 0 40px;
+
+  animation: pixelAppear 0.5s steps(5);
+}
+
+@keyframes pixelAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.15em;
+
+  color: var(--cyan);
+
+  text-shadow:
+    3px 3px 0 #30206b,
+    0 0 12px rgba(77, 238, 234, 0.6);
+}
+
+.eyebrow::before {
+  content: "● ";
+
+  color: var(--lime);
+
+  text-shadow: 0 0 8px var(--lime);
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: clamp(30px, 6vw, 64px);
+
+  line-height: 1.35;
+
+  letter-spacing: -0.04em;
+
+  color: var(--pink);
+
+  text-shadow:
+    5px 5px 0 var(--purple),
+    9px 9px 0 rgba(40, 20, 80, 0.8),
+    0 0 30px rgba(255, 101, 216, 0.35);
+}
+
+.hero p {
+  max-width: 650px;
+
+  margin: 24px auto 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.hero::after {
+  content: "ASTROLOGY  +  WEATHER  +  ABSOLUTE NONSENSE";
+
+  display: block;
+
+  margin-top: 24px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+
+  color: var(--yellow);
+
+  text-shadow: 0 0 10px rgba(255, 230, 109, 0.4);
+}
+
+/* =========================
+   MAIN PANEL
+========================= */
+
+.panel {
+  position: relative;
+
+  padding: 27px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(25, 18, 45, 0.95),
+      rgba(9, 9, 18, 0.96)
+    );
+
+  border: 2px solid var(--purple);
+
+  box-shadow:
+    8px 8px 0 rgba(53, 36, 96, 0.7),
+    0 0 40px rgba(150, 80, 255, 0.1);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+/* Pixel corners */
+
+.panel::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--pink) 0 14px,
+      var(--purple) 14px 28px,
+      var(--cyan) 28px 42px,
+      var(--lime) 42px 56px
+    );
+}
+
+.panel::after {
+  content: "COSMIC TERMINAL // SECURE CONNECTION";
+
+  position: absolute;
+
+  top: 18px;
+  right: 20px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 6px;
+
+  color: var(--dim);
+
+  opacity: 0.5;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+
+  margin-top: 28px;
+}
+
+.field label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  color: var(--cyan);
+}
+
+.field input {
+  width: 100%;
+
+  padding: 15px;
+
+  border: 2px solid #292342;
+
+  border-radius: 2px;
+
+  outline: none;
+
+  background: #080810;
+
+  color: var(--text);
+
+  font-family: "Space Mono", monospace;
+
+  font-size: 13px;
+
+  box-shadow:
+    inset 3px 3px 0 rgba(255, 255, 255, 0.02);
+
+  transition: 0.15s steps(2);
+}
+
+.field input:hover {
+  border-color: var(--pink);
+}
+
+.field input:focus {
+  border-color: var(--cyan);
+
+  box-shadow:
+    0 0 0 2px rgba(77, 238, 234, 0.1),
+    0 0 20px rgba(77, 238, 234, 0.12);
+}
+
+.field input::placeholder {
+  color: #514a62;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.generate {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding: 17px;
+
+  border: 0;
+
+  border-radius: 2px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--purple) 0 25%,
+      var(--pink) 25% 50%,
+      var(--cyan) 50% 75%,
+      var(--lime) 75% 100%
+    );
+
+  background-size: 200% 100%;
+
+  color: #09070f;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+  box-shadow:
+    5px 5px 0 #30205c;
+
+  transition:
+    transform 0.1s steps(2),
+    box-shadow 0.1s steps(2);
+
+  animation: buttonColors 8s linear infinite;
+}
+
+@keyframes buttonColors {
+  from {
+    background-position: 0% 0;
+  }
+
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.generate:hover {
+  transform: translate(-2px, -2px);
+
+  box-shadow:
+    8px 8px 0 #30205c,
+    0 0 25px rgba(255, 101, 216, 0.35);
+}
+
+.generate:active {
+  transform: translate(4px, 4px);
+
+  box-shadow: 1px 1px 0 #30205c;
+}
+
+.generate:disabled {
+  opacity: 0.5;
+
+  cursor: wait;
+}
+
+/* =========================
+   STATUS / TIMER
+========================= */
+
+.status {
+  margin-top: 22px;
+
+  padding: 28px;
+
+  border: 2px dashed var(--yellow);
+
+  background: #0b0a13;
+
+  text-align: center;
+
+  color: var(--yellow);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 9px;
+
+  line-height: 2;
+
+  box-shadow:
+    5px 5px 0 rgba(255, 230, 109, 0.12);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+
+  margin: 0 auto 18px;
+
+  border: 4px solid #2c2640;
+
+  border-top-color: var(--pink);
+
+  border-right-color: var(--cyan);
+
+  border-bottom-color: var(--lime);
+
+  border-radius: 0;
+
+  animation: pixelSpin 0.7s steps(4) infinite;
+}
+
+@keyframes pixelSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(270deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   WEATHER
+========================= */
+
+.weather {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.weather-card {
+  position: relative;
+
+  padding: 18px;
+
+  min-height: 105px;
+
+  background: var(--panel2);
+
+  border: 2px solid var(--border);
+
+  border-radius: 2px;
+
+  box-shadow:
+    4px 4px 0 rgba(45, 30, 80, 0.7);
+
+  transition: 0.15s steps(2);
+}
+
+.weather-card:nth-child(1) {
+  border-color: var(--orange);
+}
+
+.weather-card:nth-child(2) {
+  border-color: var(--cyan);
+}
+
+.weather-card:nth-child(3) {
+  border-color: var(--blue);
+}
+
+.weather-card:nth-child(4) {
+  border-color: var(--lime);
+}
+
+.weather-card:hover {
+  transform: translate(-2px, -2px);
+
+  box-shadow:
+    7px 7px 0 rgba(45, 30, 80, 0.8);
+}
+
+.weather-card span {
+  display: block;
+
+  color: var(--muted);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 6px;
+
+  line-height: 1.6;
+}
+
+.weather-card strong {
+  display: block;
+
+  margin-top: 12px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 15px;
+
+  color: var(--text);
+}
 
 .weather-card small {
   display: block;
-  margin-top: 6px;
-  opacity: 0.65;
-  font-size: 0.75rem;
+
+  margin-top: 8px;
+
+  color: var(--dim);
+
+  font-size: 8px;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+  margin-top: 25px;
+
+  animation: resultPixel 0.5s steps(5);
+}
+
+@keyframes resultPixel {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+.result-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+.result-head h2 {
+  margin: 0;
+
+  color: var(--lime);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  text-shadow:
+    0 0 10px rgba(182, 255, 74, 0.3);
+}
+
+.result-head h2::before {
+  content: "● ";
+
+  color: var(--lime);
+}
+
+/* =========================
+   COPY
+========================= */
+
+.copy {
+  padding: 9px 13px;
+
+  border: 2px solid var(--cyan);
+
+  border-radius: 2px;
+
+  background: #0b0a13;
+
+  color: var(--cyan);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+
+  cursor: pointer;
+
+  transition: 0.1s steps(2);
+}
+
+.copy:hover {
+  background: var(--cyan);
+
+  color: #080810;
+
+  box-shadow: 4px 4px 0 #263a4b;
+}
+
+/* =========================
+   HOROSCOPE
+========================= */
+
+.horoscope {
+  position: relative;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 15, 28, 0.98),
+      rgba(7, 7, 13, 0.98)
+    );
+
+  border: 2px solid var(--pink);
+
+  border-radius: 2px;
+
+  color: #e8e1f5;
+
+  font-family: "Space Mono", monospace;
+
+  font-size: 12px;
+
+  line-height: 2;
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+
+  box-shadow:
+    6px 6px 0 rgba(255, 101, 216, 0.12),
+    0 0 35px rgba(255, 101, 216, 0.07);
+}
+
+.horoscope::before {
+  content: "╔════════ COSMIC RECORD ════════╗";
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--purple);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+}
+
+.horoscope::after {
+  content: "SCIENTIFIC ACCURACY: 0%";
+
+  position: absolute;
+
+  right: 16px;
+  bottom: 10px;
+
+  color: var(--pink);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 6px;
+
+  opacity: 0.5;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+  margin-top: 18px;
+
+  padding: 14px;
+
+  border: 2px solid #ff4f70;
+
+  background: rgba(80, 15, 35, 0.3);
+
+  color: #ff8fa5;
+
+  font-family: "Space Mono", monospace;
+
+  font-size: 10px;
+
+  box-shadow:
+    4px 4px 0 rgba(255, 79, 112, 0.12);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 26px;
+
+  text-align: center;
+
+  color: #514b60;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 6px;
+
+  line-height: 2;
+
+  letter-spacing: 0.1em;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .page {
+    width: calc(100% - 20px);
+
+    padding-top: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(25px, 8vw, 45px);
+
+    text-shadow:
+      3px 3px 0 var(--purple),
+      6px 6px 0 rgba(40, 20, 80, 0.8);
+  }
+
+  .hero p {
+    font-size: 11px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .panel::after {
+    display: none;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weather {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .horoscope {
+    padding: 20px;
+
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 430px) {
+  .weather {
+    grid-template-columns: 1fr;
+  }
+
+  .result-head {
+    align-items: flex-start;
+  }
+
+  .hero::after {
+    font-size: 5px;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
 }

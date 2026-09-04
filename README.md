@@ -61,6 +61,28 @@ This project is completely software-based.
 
  ## Implementation
 
+
+
+
+# Installation and Run
+completely web based
+
+
+### Project Documentation
+For Software:
+
+# Screenshots (Add at least 3)
+![Screenshot1](Add screenshot 1 here with proper name)
+!![initial stage](image-1.png)
+*Enter details to get started
+![wait till it loads!](image-2.png)
+Horoscope is cooking!!
+
+![sample horoscope](image.png)
+*Custom horoscope generated from current weather conditions
+
+
+# Diagrams
 ### Software Architecture
 
 ```text
@@ -104,28 +126,6 @@ This project is completely software-based.
                     │  Horoscope           │
                     └──────────────────────┘ 
 ```
-
-
-# Installation and Run
-completely web based
-
-
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-!![initial stage](image-1.png)
-*Enter details to get started
-![wait till it loads!](image-2.png)
-Horoscope is cooking!!
-
-![sample horoscope](image.png)
-*Custom horoscope generated from current weather conditions
-
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
 *Add caption explaining your workflow*
 
 

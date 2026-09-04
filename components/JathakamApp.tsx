@@ -126,8 +126,7 @@ export default function JathakamApp() {
         <h1>🔮 Cosmic Jathakam</h1>
 
         <p>
-          Ninte DOB-um birthplace-um kodukku. Current weather nokki cosmic
-          department ninte entire life predict cheyyum.
+         You have a life, but no jaathakam? We have ready for you!
         </p>
       </section>
 
